@@ -6,7 +6,7 @@ export function useFeedbackForm() {
     const [formParts, setFormParts] = useState(DEFAULT_FORM_PARTS);
     const [formData, setFormData] = useState({
         firstName: '', lastName: '', sex: '', countryCode: '+63', contactNumber: '',
-        officeUnitAddress: '', officeUnitOther: '',
+        clientType: 'Internal', officeUnitAddress: '', officeUnitOther: '',
         province: '', city: '', barangay: '',
         children: [{ name: '', age: '', sex: '' }],
         activities: '',
@@ -70,6 +70,8 @@ export function useFeedbackForm() {
         if (!formData.firstName.trim()) { alert('Please enter your first name'); return false; }
         if (!formData.lastName.trim()) { alert('Please enter your last name'); return false; }
         if (formData.contactNumber.replace(/\D/g, '').length !== 10) { alert('Contact number must be exactly 10 digits.'); return false; }
+        if (formData.clientType === 'Internal' && !formData.officeUnitAddress) { alert('Please select your office/unit'); return false; }
+        if ((formData.clientType === 'External' || formData.officeUnitAddress === 'Others') && !formData.officeUnitOther.trim()) { alert('Please specify your address'); return false; }
         if (formData.children.some(c => !c.name || !c.age || !c.sex)) { alert('Please fill in all child details.'); return false; }
         if (formData.serviceAvailed === 'Mother and Child Care' && !formData.activities.trim()) { alert('Please enter the activities.'); return false; }
         return true;
@@ -94,8 +96,9 @@ export function useFeedbackForm() {
                 sex: formData.sex || null,
                 country_code: formData.countryCode || null,
                 contact_number: formData.contactNumber,
-                office_unit_address: formData.officeUnitAddress || null,
-                office_unit_other: formData.officeUnitAddress === 'Others' ? formData.officeUnitOther : null,
+                client_type: formData.clientType,
+                office_unit_address: formData.clientType === 'Internal' ? formData.officeUnitAddress : formData.officeUnitOther,
+                office_unit_other: formData.officeUnitAddress === 'Others' || formData.clientType === 'External' ? formData.officeUnitOther : null,
                 province: formData.province || null,
                 city: formData.city || null,
                 barangay: formData.barangay || null,
@@ -159,7 +162,7 @@ export function useFeedbackForm() {
     const resetForm = () => {
         setFormData({
             firstName: '', lastName: '', sex: '', countryCode: '+63', contactNumber: '',
-            officeUnitAddress: '', officeUnitOther: '',
+            clientType: 'Internal', officeUnitAddress: '', officeUnitOther: '',
             province: '', city: '', barangay: '',
             children: [{ name: '', age: '', sex: '' }],
             activities: '',

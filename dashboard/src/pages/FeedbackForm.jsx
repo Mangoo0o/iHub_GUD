@@ -239,17 +239,44 @@ export default function FeedbackForm() {
                                         </div>
                                     </div>
                                     <ModernSelect
-                                        label="Office/Unit/Address"
-                                        value={formData.officeUnitAddress}
-                                        options={OFFICE_UNIT_OPTIONS}
+                                        label="Client"
+                                        value={formData.clientType}
+                                        options={['Internal', 'External']}
                                         onChange={val => {
-                                            handleInputChange('officeUnitAddress', val);
-                                            if (val !== 'Others') handleInputChange('officeUnitOther', '');
+                                            handleInputChange('clientType', val);
+                                            handleInputChange('officeUnitAddress', '');
+                                            handleInputChange('officeUnitOther', '');
                                         }}
-                                        placeholder="Select office or unit"
-                                        icon={Building2}
+                                        placeholder="Select client type"
+                                        icon={UserCircle}
                                     />
-                                    {formData.officeUnitAddress === 'Others' && (
+
+                                    {formData.clientType === 'Internal' ? (
+                                        <ModernSelect
+                                            label="Office/Unit/Address"
+                                            value={formData.officeUnitAddress}
+                                            options={OFFICE_UNIT_OPTIONS}
+                                            onChange={val => {
+                                                handleInputChange('officeUnitAddress', val);
+                                                if (val !== 'Others') handleInputChange('officeUnitOther', '');
+                                            }}
+                                            placeholder="Select office or unit"
+                                            icon={Building2}
+                                        />
+                                    ) : (
+                                        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                                            <label className="block text-sm font-semibold text-slate-700 mb-1.5 ml-1">Office/Unit/Address <span className="text-red-500">*</span></label>
+                                            <input
+                                                type="text"
+                                                placeholder="Enter your office/unit/address"
+                                                className="w-full p-4 rounded-2xl border border-slate-200 focus:border-[#7030a0] focus:ring-4 focus:ring-violet-100 outline-none transition-all shadow-sm"
+                                                value={formData.officeUnitOther}
+                                                onChange={e => handleInputChange('officeUnitOther', e.target.value)}
+                                            />
+                                        </div>
+                                    )}
+
+                                    {formData.officeUnitAddress === 'Others' && formData.clientType === 'Internal' && (
                                         <div className="animate-in fade-in slide-in-from-top-2 duration-300">
                                             <label className="block text-sm font-semibold text-slate-700 mb-1.5 ml-1">Please specify address</label>
                                             <input type="text" placeholder="Type your office/unit/address" className="w-full p-4 rounded-2xl border border-slate-200 focus:border-[#7030a0] focus:ring-4 focus:ring-violet-100 outline-none transition-all shadow-sm" value={formData.officeUnitOther} onChange={e => handleInputChange('officeUnitOther', e.target.value)} />
