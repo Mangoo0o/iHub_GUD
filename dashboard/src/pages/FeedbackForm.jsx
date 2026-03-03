@@ -89,7 +89,7 @@ export default function FeedbackForm() {
                             <div className="flex flex-col items-center text-center leading-tight text-violet-100 font-medium">
                                 <div className="flex items-center gap-2">
                                     <Heart size={16} className="fill-current text-pink-400 shrink-0" />
-                                    <span>A Safe & Joyful Space for Every</span>
+                                    <span>A Safe & Joyful Space for</span>
                                     <Heart size={16} className="fill-current text-pink-400 shrink-0" />
                                 </div>
                                 <span>Women and Child</span>
