@@ -92,7 +92,7 @@ export default function FeedbackForm() {
                                     <span>A Safe & Joyful Space for</span>
                                     <Heart size={16} className="fill-current text-pink-400 shrink-0" />
                                 </div>
-                                <span>Women and Child</span>
+                                <span>Women and Children</span>
                             </div>
                         </div>
                     </div>
