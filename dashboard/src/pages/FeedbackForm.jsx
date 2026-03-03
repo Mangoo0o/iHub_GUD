@@ -86,10 +86,13 @@ export default function FeedbackForm() {
                                 WELCOME TO INNOVATION HUB
                             </div>
                             <h1 className="text-3xl font-black text-white mb-2 drop-shadow-md">Innovation Hub for GAD</h1>
-                            <div className="flex items-center justify-center gap-2 text-violet-100 font-medium">
-                                <Heart size={16} className="fill-current text-pink-400" />
-                                <span>A Safe & Joyful Space for Every Women and Child</span>
-                                <Heart size={16} className="fill-current text-pink-400" />
+                            <div className="flex items-center justify-center gap-3 text-violet-100 font-medium">
+                                <Heart size={16} className="fill-current text-pink-400 shrink-0" />
+                                <div className="flex flex-col items-center text-center leading-tight">
+                                    <span>A Safe & Joyful Space for Every</span>
+                                    <span>Women and Child</span>
+                                </div>
+                                <Heart size={16} className="fill-current text-pink-400 shrink-0" />
                             </div>
                         </div>
                     </div>
