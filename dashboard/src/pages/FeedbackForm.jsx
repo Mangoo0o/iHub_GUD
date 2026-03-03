@@ -88,7 +88,7 @@ export default function FeedbackForm() {
                             <h1 className="text-3xl font-black text-white mb-2 drop-shadow-md">Innovation Hub for GAD</h1>
                             <div className="flex items-center justify-center gap-2 text-violet-100 font-medium">
                                 <Heart size={16} className="fill-current text-pink-400" />
-                                <span>A Safe & Joyful Space for Every women and Child</span>
+                                <span>A Safe & Joyful Space for Every Women and Child</span>
                                 <Heart size={16} className="fill-current text-pink-400" />
                             </div>
                         </div>
@@ -119,7 +119,7 @@ export default function FeedbackForm() {
                                         Nurturing Progress
                                     </h4>
                                     <p className="text-xs text-violet-700/70 leading-relaxed">
-                                        Your feedback helps us improve the safe, caring environment for our women and children.
+                                        Your feedback helps us improve the safe, caring environment for our Women and children.
                                     </p>
                                 </div>
 
